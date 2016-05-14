@@ -6,10 +6,11 @@ namespace PrimeCoreApi
     [Route("/api/v1/prime/")]
     public class PrimeCoreController
     {
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("{numberToCheck}")]
+        public IActionResult Get(int numberToCheck)
         {
-            return new OkObjectResult("{ result:\"okay\" }");
+            PrimeNumberCheck primeNumberCheck = new PrimeNumberCheck();
+            return new OkObjectResult(primeNumberCheck.IsPrime(numberToCheck));
         }
     }
 }
