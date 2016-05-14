@@ -1,0 +1,11 @@
+FROM microsoft/dotnet:1.0.0-preview1
+
+RUN mkdir -p /dotnetapp
+WORKDIR /dotnetapp
+
+EXPOSE 5001/tcp
+ENTRYPOINT ["dotnet", "run"]
+
+COPY . /dotnetapp
+RUN dotnet restore
+RUN dotnet build
